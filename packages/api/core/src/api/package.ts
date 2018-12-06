@@ -184,6 +184,10 @@ export default async ({
     warn(interactive, 'Please set "version" or "config.forge.packagerConfig.appVersion" in your application\'s package.json so auto-updates work properly'.yellow);
   }
 
+  if (packageOpts.prebuiltAsar) {
+    throw new Error('config.forge.packagerConfig.prebuiltAsar is not supported by Electron Forge');
+  }
+
   await runHook(forgeConfig, 'generateAssets');
   await runHook(forgeConfig, 'prePackage');
 
